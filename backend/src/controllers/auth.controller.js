@@ -105,7 +105,12 @@ export async function googleAuth(req, res) {
 }
 
 export function logout(req, res) {
-    res.cookie("jwt", "", { maxAge: 0 });
+    res.cookie("jwt", "", {
+        maxAge: 0,
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV !== "development"
+    });
     res.status(200).json({ message: "Logged out" });
 }
 

@@ -23,10 +23,8 @@ const App = () => {
   useEffect(() => {
     if (authUser) {
       subscribeToCalls()
-    } else {
-      unsubscribeFromCalls()
+      return () => unsubscribeFromCalls()
     }
-    return () => unsubscribeFromCalls()
   }, [authUser, subscribeToCalls, unsubscribeFromCalls])
 
   if (isCheckingAuth) {
