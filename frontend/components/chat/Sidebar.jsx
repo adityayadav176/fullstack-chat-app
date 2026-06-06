@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Search, PenSquare, Palette } from "lucide-react"
+import { Search, PenSquare, MonitorSmartphone } from "lucide-react"
 import useChatStore from "../../src/store/useChatStore"
 import useAuthStore from "../../src/store/useAuthStore"
 import { getSocket } from "../../lib/socket"
@@ -65,13 +65,22 @@ export default function Sidebar({ selectedUser, onSelectUser, isMobileHidden }) 
         Backup status: Not configured
     </p>
 </div>
-                    <button
-                        onClick={() => setShowNewChat(true)}
-                        className="btn btn-ghost btn-sm btn-circle"
-                        title="New chat"
-                    >
-                        <PenSquare className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center gap-1">
+    <button
+        className="btn btn-ghost btn-sm btn-circle"
+        title="Active Devices"
+    >
+        <MonitorSmartphone className="w-4 h-4" />
+    </button>
+
+    <button
+        onClick={() => setShowNewChat(true)}
+        className="btn btn-ghost btn-sm btn-circle"
+        title="New chat"
+    >
+        <PenSquare className="w-4 h-4" />
+    </button>
+</div>
                 </div>
                 <label className="input input-bordered input-sm flex items-center gap-2 w-full">
                     <Search className="w-3.5 h-3.5 text-base-content/40" />
