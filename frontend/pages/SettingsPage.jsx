@@ -85,6 +85,8 @@ export default function SettingsPage() {
     const upPriv = (k) => (v) => updatePrivacy(k, v)
 
     const DARK_THEMES = new Set(["dark","night","dracula","synthwave","luxury","coffee","halloween","black","dim","forest","lofi","business"])
+    const [fontSize, setFontSize] = useState(16)
+
 
     return (
         <div className="min-h-screen bg-base-200">
@@ -148,9 +150,10 @@ export default function SettingsPage() {
                                 Preview
                             </p>
                             <div
-                                data-theme={theme}
-                                className="rounded-2xl overflow-hidden border border-base-content/10 shadow-lg"
-                            >
+    data-theme={theme}
+    style={{ fontSize: `${fontSize}px` }}
+    className="rounded-2xl overflow-hidden border border-base-content/10 shadow-lg"
+>
                                 {/* Preview header */}
                                 <div className="bg-base-200 px-4 py-3 flex items-center gap-3 border-b border-base-content/10">
                                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content text-sm font-bold">J</div>
@@ -204,6 +207,21 @@ export default function SettingsPage() {
                                 {DARK_THEMES.has(theme) ? <Moon className="w-3.5 h-3.5 text-base-content/40" /> : <Sun className="w-3.5 h-3.5 text-base-content/40" />}
                                 <p className="text-xs text-base-content/40">
                                     Active theme: <span className="text-primary font-semibold capitalize">{theme}</span>
+
+                                    <div className="mt-4">
+    <label className="text-sm font-medium">
+        Font Size: {fontSize}px
+    </label>
+
+    <input
+        type="range"
+        min="12"
+        max="24"
+        value={fontSize}
+        onChange={(e) => setFontSize(e.target.value)}
+        className="range range-primary range-sm mt-2"
+    />
+</div>
                                 </p>
                             </div>
                         </div>
