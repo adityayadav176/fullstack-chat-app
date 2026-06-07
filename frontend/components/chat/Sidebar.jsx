@@ -66,10 +66,12 @@ export default function Sidebar({ selectedUser, onSelectUser, isMobileHidden }) 
         )}
     </h2>
 
-    <p className="text-[10px] text-base-content/40">
-        Backup status: Not configured
-    </p>
-</div>
+ <p
+    className="text-[10px] text-base-content/40 underline decoration-dotted cursor-help"
+    title="Your chat backup is not set up. Go to Settings to configure it."
+>
+    Backup status: Not configured
+</p>
                     <div className="flex items-center gap-1">
     <button
         className="btn btn-ghost btn-sm btn-circle"
