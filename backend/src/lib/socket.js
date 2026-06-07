@@ -39,7 +39,8 @@ io.use((socket, next) => {
 
 const userSocketMap = {};
 
-export const getReceiverSocketIds = (userId) => userSocketMap[userId] || [];
+export const getReceiverSocketIds = (userId) => 
+    userSocketMap[userId] ? [...userSocketMap[userId]] : [];
 
 // Keep track of the last time MongoDB was updated for a user to avoid connection churn overhead
 const lastDbUpdateCache = new Map();
