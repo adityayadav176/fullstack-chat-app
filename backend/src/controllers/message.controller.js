@@ -5,6 +5,7 @@ import cloudinary from "../lib/cloudinary.js";
 import { io, getReceiverSocketIds } from "../lib/socket.js";
 import webpush from "../lib/webpush.js";
 import { catchAsync } from "../lib/utils.js";
+import xss from "xss";
 
 // ── Helpers ──────────────────────────────────────────────────────
 
@@ -269,7 +270,9 @@ export const sendMessage = catchAsync(async (req, res) => {
             return res.status(400).json({ message: "Invalid replyTo ID format" });
         }
 
-        if (!message?.trim() && !image && !audio) {
+        let sanitizedMessage = message ? xss(message.trim()) : "";
+
+        if (!sanitizedMessage && !image && !audio) {
             return res.status(400).json({ message: "Message content cannot be empty" });
         }
 
@@ -308,7 +311,7 @@ export const sendMessage = catchAsync(async (req, res) => {
         const newMessage = await Message.create({
             senderId,
             receiverId,
-            message: message || "",
+            message: sanitizedMessage,
             image: imageUrl,
             audio: audioUrl,
             replyTo: replyTo || undefined,
