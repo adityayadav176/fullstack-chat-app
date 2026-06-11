@@ -9,6 +9,8 @@ import ChatPage from "../pages/ChatPage"
 import SettingsPage from "../pages/SettingsPage"
 import ProfilePage from "../pages/ProfilePage"
 import SavedMessagesPage from "../pages/SavedMessagesPage"
+import ScheduledMessagesPage from "../pages/ScheduledMessagesPage"
+import ConversationInsightsPage from "../pages/ConversationInsightsPage"
 import CallHandler from "../components/CallHandler"
 import useAuthStore from "./store/useAuthStore"
 import useCallStore from "./store/useCallStore"
@@ -39,7 +41,7 @@ const App = () => {
   }
 
   return (
-    <div className="h-[100dvh] flex flex-col overflow-hidden">
+    <div className="h-dvh flex flex-col overflow-hidden">
       <Toaster position="top-center" />
       <CallHandler />
       <Navbar />
