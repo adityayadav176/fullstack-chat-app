@@ -33,10 +33,16 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.Mixed,
         default: null,
     },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
     lastSeen: {
         type: Date,
         default: Date.now,
     },
+    otp: String,
+    otpExpires: Date
 }, { timestamps: true });
 
 userSchema.index({ name: "text" });
